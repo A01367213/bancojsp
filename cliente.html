@@ -1,0 +1,18 @@
+<html>
+	<head><title>Apache y CGIs</title></head>
+	<body>
+		<h2>Banco IoT</h2>
+		<!--form action='../cgi-bin/ClienteController.py' method='get'-->
+		<!--form action='../banco/banco' method='get'-->
+		<form action='../banco/Cliente.jsp' method='get'>
+			NO. CUENTA:  <input type='text' name='nocta'><br/>
+			NOMBRE:      <input type='text' name='nombre'><br/>
+			TIPO CUENTA: <input type='text' name='tipo'><br/>
+			SALDO:       <input type='text' name='saldo'><br/><br/>
+					     <input type='submit' name='boton' value='Capturar Datos'>
+					     <input type='submit' name='boton' value='Consultar Clientes'>
+					     <input type='submit' name='boton' value='Consultar No Cuenta'>
+					     <input type='submit' name='boton' value='Consultar Tipo Cuenta'>
+		</form>
+	</body>
+</html>

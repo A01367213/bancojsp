@@ -1,0 +1,21 @@
+MySQL
+Activar servicio 'mysqld.exe' en carpeta bin
+cd C:\MySQL\mysql-5.7.3-m13-winx64\bin
+mysql -u root
+
+Conexión Java:
+set path=C:\jdk-15.0.2\bin
+
+Conexion Java-SQL:
+SET CLASSPATH=C:\MySQL\mysql-connector-java-8.0.23\mysql-connector-java-8.0.23.jar;.;%CLASSPATH%
+
+Conexion Jason
+
+
+Conexión Apache Tomcat
+set JAVA_HOME=C:\jdk-15.0.2
+set CATALINA_HOME=C:\apache-tomcat-8.5.64
+set PATH=%JAVA_HOME%\bin;%PATH%
+set CLASSPATH=%CATALINA_HOME%\lib\jsp-api.jar;%CATALINA_HOME%\lib\servlet-api.jar;C:\jason-io-4.1.8\json-io-4.1.8.jar;.;%CLASSPATH%
+cd C:\apache-tomcat-8.5.64\bin
+startup
