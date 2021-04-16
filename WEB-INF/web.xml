@@ -33,6 +33,6 @@
   <servlet-mapping>
       <servlet-name>ServletBanco</servlet-name>
       <url-pattern>/banco</url-pattern>
-  </servlet-mapping> 
+  </servlet-mapping>
 
 </web-app>

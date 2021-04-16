@@ -12,21 +12,26 @@
 
 
 <html>
-	<head><title>Apache y CGIs</title></head>
+	<head>
+		<title>Apache y Jsps</title>
+		<!--link rel="stylesheet" type="text/css" href="../bancojsp/styles/styles.css"-->
+	</head>
 	<body>
-		<h2>Banco IoT</h2>
+		<h2>Scotia Bank</h2>
 		<!--form action='../cgi-bin/ClienteController.py' method='get'-->
 		<!--form action='../banco/banco' method='get'-->
 		<form action='../bancojsp/Cliente.jsp' method='get'>
-			NO. CUENTA:  <input type='text' name='nocta'><br/>
-			NOMBRE:      <input type='text' name='nombre'><br/>
-			TIPO CUENTA: <input type='text' name='tipo'><br/>
-			SALDO:       <input type='text' name='saldo'><br/><br/>
-					     <input type='submit' name='bCapturar' value='Capturar Datos'>
-					     <input type='submit' name='bConsultar' value='Consultar Clientes'>
-					     <input type='submit' name='bConsultarNCta' value='Consultar No Cuenta'>
-					     <input type='submit' name='bConsultarTipo' value='Consultar Tipo Cuenta'>
+			
+				NO. CUENTA:	 <input type='text' name='nocta'><br>
+				NOMBRE:      <input type='text' name='nombre'><br>
+				TIPO CUENTA: <input type='text' name='tipo'><br/>
+				SALDO:       <input type='text' name='saldo'><br/><br/>
+							<input type='submit' name='bCapturar' value='Capturar Datos'>
+							<input type='submit' name='bConsultar' value='Consultar Clientes'>
+							<input type='submit' name='bConsultarNCta' value='Consultar No Cuenta'>
+							<input type='submit' name='bConsultarTipo' value='Consultar Tipo Cuenta'>
 		</form>
+		<image align='center' alt='IMAGEN' src='../bancojsp/images/nino.jpg'></image>
 	</body>
 </html>
 <%
@@ -47,8 +52,9 @@
 			datos = clientedp.toString();
 
 			// 2.2 Capturar datos en BD
-			respuesta = banco.capturar(datos);
+			//respuesta = banco.capturar(datos);
 			//respuesta = datos;
+			respuesta = banco.capturar(clientedp);
 
 			// 2.3 Enviar al server el resultado de la transaccion
 			response.sendRedirect("RespuestaServer1.jsp?datos="+respuesta);
@@ -66,22 +72,36 @@
 		if (request.getParameter("bConsultarNCta") != null){
 			//response.sendRedirect("RespuestaServer.jsp?datos=Consultar no. cuenta...");
 
-			String nocta = request.getParameter("nocta");
+			//String nocta = request.getParameter("nocta");
+			String nocta = clientedp.getNocta();
 
 			datos=banco.consultarNocta(nocta);
-			response.sendRedirect("RespuestaServer.jsp?datos="+datos);
+			//response.sendRedirect("RespuestaServer.jsp?datos="+datos);
+			%>
+			<jsp:forward page ="RespuestaServer.jsp">
+				<jsp:param name="datos" value="<%=datos%>"/>
+			</jsp:forward>
+
+			<%
 		}
 		if (request.getParameter("bConsultarTipo") != null){
 			//response.sendRedirect("RespuestaServer.jsp?datos=Consultar tipo cuenta...");
 			
 			//Obtener tipo de cuenta a consultar
-			String tcta = request.getParameter("tipo");
+			//String tcta = request.getParameter("tipo");
+			String tcta = clientedp.getTipo();
 
 			//Consultar cliente con ese tipo de cuenta
 			datos=banco.consultarTipo(tcta);
 
 			//Mostrar datos
-			response.sendRedirect("RespuestaServer.jsp?datos="+datos);
+			//response.sendRedirect("RespuestaServer.jsp?datos="+datos);
+			%>
+			<jsp:forward page ="RespuestaServer.jsp">
+				<jsp:param name="datos" value="<%=datos%>"/>
+			</jsp:forward>
+
+			<%
 		}
 	}
 %>

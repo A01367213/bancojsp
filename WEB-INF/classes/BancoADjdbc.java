@@ -59,7 +59,8 @@ public class BancoADjdbc
 
 
 
-	public String capturar(String datos)
+	//public String capturar(String datos)
+	public String capturar(ClienteDP clientedp)
 	{
 		String resultado ="";
 		String insertCliente;
@@ -74,7 +75,7 @@ public class BancoADjdbc
 		saldo = st.nextToken();
 		*/
 		
-		clientedp = new ClienteDP(datos);
+		//clientedp = new ClienteDP(datos);
 
 		insertCliente = "INSERT INTO Cliente VALUES ("+clientedp.toStringSQL()+")";
 		try
