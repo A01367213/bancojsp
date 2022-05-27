@@ -136,8 +136,8 @@ public class BancoADjdbc
 
 				//datos = datos + clientedp.toString() + "\n";
 				//datos = datos + clientedp.toStringHtml();
-				//datos = datos + clientedp.toStringJson3()+",";
-				datos = datos + JsonWriter.objectToJson(clientedp) + ",";
+				datos = datos + clientedp.toStringJson1()+",";
+				//datos = datos + JsonWriter.objectToJson(clientedp) + ",";
 			}
 
 			datos = datos.substring(0,datos.length()-1);
